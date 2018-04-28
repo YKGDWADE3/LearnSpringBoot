@@ -1,17 +1,20 @@
 package controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @EnableAutoConfiguration
 public class HelloController {
 
+    @Value("${ykgName}")
+    private String name;
+
+
     @RequestMapping("/hello")
-    @ResponseBody
     String home() {
-        return "Hello World!";
+        return name;
     }
 }
